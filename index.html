@@ -4,10 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Site</title>
+  <title>TaskFlow</title>
 </head>
 <body>
-  <h1>Meu Site</h1>
+
+  <!-- Barra de navegação -->
+  <nav>
+    <h1 class="title">TaskFlow</h1>
+
+    <button id="darkModeToggle">Dark Mode</button>
+  </nav>
+
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h2>Adicione uma nova tarefa</h2>
+
+
+      <form action="">
+        <input type="text" placeholder="Digite a nova tarefa">
+        <button type="submit">Adicionar</button>
+      </form>
+
+  </main>
+
+
+  <!-- Progresso Geral -->
+  <section class="geralProgress">
+    <h2>Progresso Geral</h2>
+<!-- Barra de progesso tarefas -->
+    <div class="progressBar">
+      <div class="progressFill">tarefas pendentes</div>
+    </div>
+<!-- Barra de progresso tarefas concluídas -->
+    <div class="progressBar">
+      <div class="progressFill">tarefas concluídas</div>
+    </div>
+  </section>
+
+
+  <!-- Filtrar Tarefas -->
+  <section class="filterSect">
+    <h2>Filtrar Tarefas</h2>
+    <button id="filterAll">Todas</button>
+    <button id="filterPending">Pendentes</button>
+    <button id="filterCompleted">Concluídas</button>
+  </section>
+
+
+<!-- Lista de Tarefas -->
+  <section class="tasksList">
+    <h2>Lista de Tarefas</h2>
+    <ul id="taskList">
+      <!-- As tarefas serão adicionadas aqui dinamicamente -->
+
+    </ul>
+  </section>
+
+
+<footer>
+
+  <p>2026 TaskFlow</p>
+
+</footer>
 
   <script src="script.js"></script>
 </body>
