@@ -1,80 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>TaskFlow</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TaskFlow</title>
+  </head>
+  <body>
+    <!-- Barra de navegação -->
+    <nav>
+      <h1 class="logo"><span>TASK</span><span>FLOW</span></h1>
 
-  <!-- Barra de navegação -->
-  <nav>
-    <h1 class="logo"><span>TASK</span><span>FLOW</span></h1>
+      <button id="darkModeToggle">Dark Mode</button>
+    </nav>
 
-    <button id="darkModeToggle">Dark Mode</button>
-  </nav>
+    <!-- Conteúdo principal -->
 
-
-  <!-- Conteúdo principal -->
-
-  <main>
-    <section class="taskSection">
-      <h2 class="secundaryTitle">Adicione uma nova tarefa</h2>
+    <main>
+      <section class="taskSection">
+        <h2 class="secundaryTitle">Adicione uma nova tarefa</h2>
 
         <form action="/event" id="form" class="containerForm">
-          <input type="text" placeholder="Digite a nova tarefa" class="taskInput">
-          <button type="submit" class="buttonSubmit">Adicionar</button>
+          <input type="text" placeholder="Digite a nova tarefa" class="taskInput" id="taskInput"/>
+          <button type="submit" class="buttonSubmit" id="buttonAdic">
+            Adicionar
+          </button>
         </form>
-  </section>
-  
+      </section>
 
-
-  <!-- Progresso Geral -->
-  <section class="containerProgress">
-    <h2 class="progressTitle">Progresso Geral</h2>
-<!-- Barra de progesso tarefas -->
-    <div class="bars">
-
+      <!-- Progresso Geral -->
+      <section class="containerProgress">
+        <h2 class="progressTitle">Progresso Geral</h2>
+        <!-- Barra de progesso tarefas -->
+        <div class="bars">
           <!-- Barra de progresso tarefas pendentes -->
           <div class="progressBar">
             <div class="progressFill progressPendent">tarefas pendentes</div>
           </div>
 
-      <!-- Barra de progresso tarefas concluídas -->
+          <!-- Barra de progresso tarefas concluídas -->
           <div class="progressBar">
             <div class="progressFill progressComplete">tarefas concluídas</div>
-
           </div>
-    </div>
-  </section>
+        </div>
+      </section>
+      <!-- Linha Separadora -->
+      <div class="line"></div>
 
+      <!-- Lista de tarefas -->
+      <section class="containerList">
+        <h2 class="listTitle">Lista de Tarefas</h2>
 
+        <!-- Filtrar Tarefas -->
+        <div class="filterSect">
+          <h2 class="filterTitle">Filtros</h2>
 
+          <div class="filterButtons">
+            <button id="filterAll" class="buttonFilter buttonAll">Todas</button>
+            <button id="filterPending" class="buttonFilter">Pendentes</button>
+            <button id="filterCompleted" class="buttonFilter">
+              Concluídas
+            </button>
+          </div>
+        </div>
 
-  <!-- Lista de tarefas -->
-  <section class="containerList">
+        <!-- Lista de Tarefas -->
+        <ul id="taskList">
+          <!-- As tarefas serão adicionadas aqui dinamicamente -->
 
-    <h2 class="listTitle">Lista de Tarefas</h2>
+          <template id="taskTemplate">
+          <li class="card">
 
-
-    <!-- Filtrar Tarefas -->
-    <div class="filterSect">
-
-      <h2 class="filterTitle">Filtrar Tarefas</h2>
-
-      <div class="filterButtons">
-        <button id="filterAll" class="buttonFilter buttonAll">Todas</button>
-        <button id="filterPending" class="buttonFilter">Pendentes</button>
-        <button id="filterCompleted" class="buttonFilter">Concluídas</button>
-      </div>
-    </div>
-
-
-  <!-- Lista de Tarefas -->
-      <ul id="taskList">
-        <!-- As tarefas serão adicionadas aqui dinamicamente -->
-
+            <h3 class="cardTitle">conteudo</h3>
+            <textarea name="" id="" class="textInput"></textarea>
+            
+            <div class="buttonsCard">
+                <label class="checkContainer">
+                <input type="checkbox">
+                <span class="checkmark"><img src="/Img/Icons/check.png" alt=""></span>
+                Concluída
+                </label>
+            </div>
+            
+            <button class="removeButton"><img src="/Img/Icons/delete.png" alt=""></button>
+          </li> 
+        </template>
 
           <!-- <li class="card">
 
@@ -90,22 +100,14 @@
             </div>
             
           </li> -->
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <span>Victor Fiuza Moreira</span>
+      <span>TaskFlow 2025</span>
+    </footer>
 
-          
-      </ul>
-
-  </section>  
-
-
-</main>
-<footer>
-  <span>Victor Fiuza Moreira</span>
-  <span>TaskFlow 2025</span>
-
-</footer>
-
-  <script src="script.js"></script>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
