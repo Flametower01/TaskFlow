@@ -11,20 +11,70 @@ li {
 }
 
 :root {
+  --bg: #fdfdfd;
+  --bg-secondary:#aebbcf81;
+
+  --bg-surface: #ecececc4;
+
+  /* Superfícies */
+  --surface:  #ffffff;
+  --surface-secundary:#d1e2ee;
+  --surface-hover:#000000;
+  --surface-card: #97969550;
+
+  /* Cor principal */
+  --primary: #4f8ef5;
+  --primary-hover:#0044ffd5 ;
+
+  /* Sombra */
+  --shadow: #2c2d2eab ;
+
+  --shadowFilter: #4333d6 ;
+  --shadowFilterSpecial:#05173f ;
+
+  /* Textos */
+  --title-Primary: #0d11e0d3 ;
+  --text: #000000;
+  --text-secondary: #808083;
+
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  /* line */
+  --line: #0a105c;
+  --line-secundary: #000000;
+  --lineButtonSpecial: #000000 ;
+}
+
+body.dark {
   --bg: #0f172a;
   --bg-secondary: #162852;
+
+  --bg-surface: #08071b38;
+
   --surface: #1e293b;
-  --surface-hover: #334155;
+  --surface-secundary:#d1e2ee;
+  --surface-hover: #ffffff;
+  --surface-card: #334155;
 
   --primary: #3b82f6;
   --primary-hover: #2563eb;
 
-  --title-secondary: #ffffff;
-  --text: #f8fafc;
-  --text-secondary: #94a3b8;
+  --shadow: #090636;
+
+  --shadowFilter: #4333d6 ;
+  --shadowFilterSpecial:#ffffff ;
+  
+  --title-Primary: #ffffff;
+  --text: #fffcfc;
+  --text-secondary: #948e8e;
 
   --success: #22c55e;
   --danger: #ef4444;
+
+  --line: #1a21a8;
+  --line-secundary: #fffefe9c;
+  --lineButtonSpecial: #ffffff ;
 }
 
 html,
@@ -34,7 +84,7 @@ body {
 
 body {
   font-family: "poppins", sans-serif;
-  background: linear-gradient(160deg, var(--bg-secondary), var(--bg));
+  background: linear-gradient(160deg, var(--bg), var(--bg-secondary));
   color: var(--text);
   line-height: 1.6;
 
@@ -45,8 +95,8 @@ body {
 
 /* Barra de navegação */
 nav {
-  backdrop-filter: blur(50px);
-  border-bottom: 1px solid #ffffff38;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line-secundary);
 
   display: flex;
   align-items: center;
@@ -87,7 +137,7 @@ nav {
   color: var(--surface);
 
 }
-
+/* conteudo principal */
 main {
 
   width: 800px;
@@ -97,14 +147,14 @@ main {
   padding-top: 70px;
   flex: 1;
 
-  background-color: #08071b38;
+  background-color: var(--bg-surface);
 
 }
 
 /* Menu Principal */
 
 .taskSection {
-  height: 150px;
+  height: 180px;
   display: flex;
   flex-direction: column;
 
@@ -118,7 +168,7 @@ main {
   font-size: 1.7rem;
   margin-bottom: 30px;
 
-  color: var(--title-secondary);
+  color: var(--title-Primary);
 }
 
 .containerForm {
@@ -130,6 +180,8 @@ main {
 
   padding: 0 10px;
   /* border: 1px solid red; */
+
+
 }
 
 /* Input Adicionar */
@@ -139,15 +191,17 @@ main {
   border: none;
   border-radius: 50px;
 
-  background-color: var(--surface-hover);
+  background-color: var(--surface);
 
   color: var(--text);
 
   width: clamp(200px, 500px, 80%);
+
+  box-shadow: 4px 2px 7px var(--shadow);
 }
 
 .taskInput::placeholder {
-  color: var(--text);
+  color: var(--text-secondary);
 }
 
 /* Botão Submit */
@@ -155,9 +209,10 @@ main {
   border: none;
   border-radius: 10px;
 
-  padding: 0px 10px;
+  padding: 10px 15px;
   background-color: var(--primary);
   color: var(--text);
+    box-shadow: 3px 2px 7px var(--shadow);
 
   transition: all 0.2s ease;
 
@@ -167,7 +222,49 @@ main {
 .buttonSubmit:hover {
   background: var(--primary-hover);
 
-  box-shadow: 0 0 7px var(--primary-hover);
+  box-shadow: 0 0 15px var(--shadowFilter);
+}
+
+/* animação de click */
+.buttonSubmitClick {
+  animation: pulse 0.2s ease ;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  } 
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1) ;
+  }
+}
+
+/* Mensagem enviar */
+
+.sendMessage {
+  color: var(--primary-hover);
+ 
+  font-size: 1.5rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  letter-spacing: 1px;
+  
+  margin-top: 1.2rem;
+
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  cursor: default;
+}
+
+.ativar {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Seção de Progresso Geral */
@@ -187,7 +284,7 @@ main {
 
 /* Titulo Progresso */
 .progressTitle {
-  color: var(--title-secondary);
+  color: var(--title-Primary);
 
   font-size: 2rem;
 }
@@ -209,17 +306,24 @@ main {
 
 /* Barra de progresso */
 .progressBar {
-  background: linear-gradient(360deg, var(--surface), var(--bg));
-  width: inherit;
+  background: linear-gradient(360deg, var(--surface), var(--surface-secundary));
+  width: 100px;
 
   position: relative;
 
   display: flex;
+
+  box-shadow: 2px 3px 3px var(--shadow);
 }
 
 /* Parte completa da Barra de Progresso */
-.progressFill {
+
+.progressPending {
+  background-color: var(--danger);
+  box-shadow: 1px 1px 3px #700a0af6;
+  
   width: 100%;
+
   position: absolute;
   bottom: 0;
 
@@ -228,20 +332,60 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.progressPendent {
-  background-color: var(--danger);
+  transition: height 0.5s ease;
+  
 }
 .progressComplete {
   background-color: var(--success);
+  box-shadow: 1px 1px 3px #045c04d0;
+
+  width: 100%;
+
+  position: absolute;
+  bottom: 0;
+
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: height 0.5s ease;
+}
+
+.filtered {
+  font-size: 1rem;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.filteredContainer {
+  display: flex;
+
+}
+
+#allTasks {
+  color: var(--text-secondary);
+  margin-right:5px ;
+}
+
+#completedTasks {
+ color: var(--success);
+ margin-left:5px ;
+ margin-right:5px ;
+}
+
+#pendingTasks {
+  color: var(--danger);
+  margin-left:5px ;
+  margin-right:5px ;
 }
 
 /* Seção Tarefas */
 
 .containerList {
-  padding: 0 20px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,7 +393,7 @@ main {
 
 /* Titulo principal */
 .listTitle {
-  color: var(--title-secondary);
+  color: var(--title-Primary);
   font-size: 2.6rem;
   margin-bottom: 10px;
 }
@@ -270,6 +414,7 @@ main {
 .filterTitle {
   color: var(--primary);
   align-self:flex-start;
+  letter-spacing: 1px;
 }
 
 /* container Botões */
@@ -293,26 +438,42 @@ main {
 
   transition: all 0.3s ease;
 }
+/* animação click */
+.buttonFilterClick {
+  transform: translateY(-10px);
+  box-shadow: 3px 3px 100px var(--shadowFilter);
+  background-color: var(--primary-hover) ;
+}
 
 .buttonFilter:hover {
   background-color: var(--primary-hover);
-  box-shadow: 3px 3px 100px #29388d;
+  box-shadow: 3px 3px 100px var(--shadowFilter);
 }
 
 /* botão filtrar todos */
-.buttonFilter:nth-child(1) {
+.buttonAll {
   background-color: rgba(255, 255, 255, 0);
   color: var(--text);
   box-shadow: none;
 
-  border: 1px solid;
+  border: 1px solid var(--lineButtonSpecial);
 
   transition: all 0.3s ease;
 }
 
-.buttonFilter:nth-child(1):hover {
-  background-color: var(--text);
-  box-shadow: 2px 2px 100px #767a8f;
+.buttonAll:hover {
+  color: var(--text);
+  background-color: var(--surface-hover);
+  box-shadow: 2px 2px 100px var(--shadowFilterSpecial);
+
+  color: var(--surface);
+}
+
+/* animação click special */
+.buttonAllFilterClick {
+  transform: translateY(-10px);
+  background-color: var(--surface-hover);
+  box-shadow: 2px 2px 100px var(--shadowFilterSpecial);
 
   color: var(--surface);
 }
@@ -341,6 +502,7 @@ main {
   overflow: hidden;
 
   width: 350px;
+
   height: 200px;
 
   padding: 10px 0;
@@ -348,9 +510,7 @@ main {
 
   background-color: var(--surface);
 
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius:30px;
 
   display: flex;
   flex-direction: column;
@@ -366,7 +526,7 @@ main {
   padding: 10px;
   margin-bottom:10px ;
 
-  background-color: var(--surface-hover);
+  background-color: var(--surface-card);
   color: var(--text);
 
   font-size: 1rem;
@@ -380,7 +540,7 @@ main {
 
   padding-left:10px ;
 }
-
+/* CheckMark */
 .checkContainer {
   display: flex;
   align-items: center;
@@ -392,7 +552,7 @@ main {
   display: none;
 }
 
-.checkmark {
+.checkMark {
   width: 22px;
   height: 22px;
   border: 2px solid #3b82f6;
@@ -404,8 +564,8 @@ main {
   justify-content: center;
 }
 
-.checkContainer input:checked + .checkmark {
-  background-color: #3b82f6;
+.checkBox:checked + .checkMark {
+ background-color: #3b82f6;
 }
 
 .removeButton {
@@ -434,7 +594,7 @@ footer {
   width: 100%;
   padding: 0 20px;
 
-  border-top: 0.1px solid var(--bg-secondary);
+  border-top: 0.1px solid var(--line);
 
   background: linear-gradient(360deg,#09044b38 , var(--bg));
 
@@ -451,6 +611,20 @@ footer {
 
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, transparent, var(--bg-secondary), transparent);
+    background: linear-gradient(to right, transparent, var(--line), transparent);
 
+}
+/* Responsividade */
+
+@media (min-width: 800px) {
+  #taskList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 460px) {
+  .filtered {
+    display: flex;
+    flex-direction: column;
+  }
 }
