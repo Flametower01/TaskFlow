@@ -1,0 +1,27 @@
+# Editores e IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependências (caso adicione Node/npm no futuro)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+
+# Build (caso adicione bundler no futuro, ex: Vite)
+dist/
+build/
