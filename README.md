@@ -51,6 +51,7 @@ taskflow/
 │       ├── check.png
 │       └── delete.png
 └── README.md
+└── .gitignore
 
 ```
 
