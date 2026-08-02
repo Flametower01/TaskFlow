@@ -31,7 +31,7 @@ Esse projeto não depende de build, servidor ou instalação de pacotes. Basta:
 
 1. Clonar o repositório:
    ```bash
-   git clone https://github.com/Flametower01/TaskFlow.git
+   git clone https://github.com/VictorFiuza01/TaskFlow.git
    ```
 2. Entrar na pasta do projeto:
    ```bash
